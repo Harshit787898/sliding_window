@@ -1,0 +1,25 @@
+class Compute {
+    
+    public long[] printFirstNegativeInteger(long A[], int N, int K)
+    {
+        int i=0,j=0,ws=0,we=K-1;
+        long arr [] = new long[N-K+1];
+        
+        while(we<N){
+            if(i>we){
+                arr[j] = 0;
+                j++;
+                ws++;
+                we++;
+            }
+            else if(A[i]<0 && i>= ws && i<= we){
+                arr[j] = A[i];
+                j++;
+                ws++;
+                we++;
+            }
+            else i++;
+        }
+        return arr;
+    }
+}
