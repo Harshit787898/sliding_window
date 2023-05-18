@@ -1,0 +1,26 @@
+class Solution {
+    public int totalFruit(int[] fruits) {
+         Map<Integer, Integer> map = new HashMap<>();
+        int ws = 0,  we = 0;
+        int ans = 0;
+        while (we < fruits.length) {
+            map.put(fruits[we], map.getOrDefault(fruits[we], 0) + 1);
+            if (map.size() > 2) {
+                while (map.size() > 2) {
+                    int count = map.get(fruits[ws]) - 1;
+                    if (count == 0) {
+                        map.remove(fruits[ws]);
+                    }
+                    else {
+                        map.put(fruits[ws], count);
+                    }
+                    ws++;
+                }
+
+            } 
+            ans = Math.max(ans, we - ws + 1);
+            we++;
+        }
+        return ans;
+    }
+}
