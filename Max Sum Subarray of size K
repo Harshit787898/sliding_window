@@ -1,0 +1,24 @@
+class Solution{
+    public long sum(int ws,int we,ArrayList<Integer> arr){
+        long s=0;
+        for(int i=ws;i<=we;i++){
+            s+=arr.get(i);
+        }
+        return s;
+    }
+     long maximumSumSubarray(int k, ArrayList<Integer> arr,int N){
+        // code here
+        int ws=0;
+        int we=k-1;
+        long s=sum(ws,we,arr);
+        long m=s;
+        we+=1;
+        while(we<N){
+            s=s+arr.get(we)-arr.get(ws);
+            m=Math.max(m,s);
+            ws+=1;
+            we+=1;
+        }
+        return m;
+    }
+}
